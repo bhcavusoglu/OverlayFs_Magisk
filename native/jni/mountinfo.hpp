@@ -1,6 +1,8 @@
 #pragma once
 #include "base.hpp"
-	
+#include <vector>
+#include <string>
+
 struct mount_info {
     unsigned int id;
     unsigned int parent;
