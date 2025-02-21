@@ -3,14 +3,14 @@
 The original developer has abandoned this project, so I have decided to continue its development. All functionalities are working flawlessly, and I have made several improvements to enhance performance, stability, and compatibility.
 
 🔹 What's New in This Update?
-> Upgraded NDK Version: Migrated from NDK r23b to NDK r27c, improving compatibility, security, and performance.
-> Modernized Memory Management: Replaced variable-length arrays (VLA) with std::vector<char>, ensuring better memory safety and compatibility with modern C++ standards.
-> Better Compiler Optimization: Utilizing the latest Clang toolchain for faster and more efficient binary generation.
-> Enhanced Android 12+ Support: Improved handling of SELinux, OverlayFS, and Mount Namespace for newer Android versions.
-> Performance Improvements: Optimized code execution by leveraging newer LLVM lld linker, reducing compilation time and runtime overhead.
-> Stability Fixes: Addressed potential buffer overflows and unsafe memory operations, making the module more robust.
-> Extended Architecture Support: Improved ARM64 and x86_64 optimizations for better performance across different devices.
-> This update ensures the project remains relevant, stable, and efficient for modern Android environments. Stay tuned for more improvements! 🚀🔥
+- Upgraded NDK Version: Migrated from NDK r23b to NDK r27c, improving compatibility, security, and performance.
+- Modernized Memory Management: Replaced variable-length arrays (VLA) with std::vector<char>, ensuring better memory safety and compatibility with modern C++ standards.
+- Better Compiler Optimization: Utilizing the latest Clang toolchain for faster and more efficient binary generation.
+- Enhanced Android 12+ Support: Improved handling of SELinux, OverlayFS, and Mount Namespace for newer Android versions.
+- Performance Improvements: Optimized code execution by leveraging newer LLVM lld linker, reducing compilation time and runtime overhead.
+- Stability Fixes: Addressed potential buffer overflows and unsafe memory operations, making the module more robust.
+- Extended Architecture Support: Improved ARM64 and x86_64 optimizations for better performance across different devices.
+- This update ensures the project remains relevant, stable, and efficient for modern Android environments. Stay tuned for more improvements! 🚀🔥
 
 # Magisk Overlayfs
 
