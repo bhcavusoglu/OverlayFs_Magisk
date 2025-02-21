@@ -1,14 +1,15 @@
 #pragma once
 #include <errno.h>
+#include <vector>
 #define LOG_TAG "OverlayFS"
 
 extern int log_fd;
 
 #define write_log(PRIO, TAG, ...) \
     { \
-      char logbuffer[4098]; \
-      snprintf(logbuffer, sizeof(logbuffer)-1, __VA_ARGS__); \
-      log_to_file(log_fd, PRIO, logbuffer); \
+      std::vector<char> logbuffer(4098); \
+      snprintf(logbuffer.data(), logbuffer.size() - 1, __VA_ARGS__); \
+      log_to_file(log_fd, PRIO, logbuffer.data()); \
     }
 
 #define LOGD(...) write_log(1, LOG_TAG, __VA_ARGS__)
