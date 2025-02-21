@@ -1,3 +1,17 @@
+# Project Continuation Announcement 🚀
+
+The original developer has abandoned this project, so I have decided to continue its development. All functionalities are working flawlessly, and I have made several improvements to enhance performance, stability, and compatibility.
+
+🔹 What's New in This Update?
+> Upgraded NDK Version: Migrated from NDK r23b to NDK r27c, improving compatibility, security, and performance.
+> Modernized Memory Management: Replaced variable-length arrays (VLA) with std::vector<char>, ensuring better memory safety and compatibility with modern C++ standards.
+> Better Compiler Optimization: Utilizing the latest Clang toolchain for faster and more efficient binary generation.
+> Enhanced Android 12+ Support: Improved handling of SELinux, OverlayFS, and Mount Namespace for newer Android versions.
+> Performance Improvements: Optimized code execution by leveraging newer LLVM lld linker, reducing compilation time and runtime overhead.
+> Stability Fixes: Addressed potential buffer overflows and unsafe memory operations, making the module more robust.
+> Extended Architecture Support: Improved ARM64 and x86_64 optimizations for better performance across different devices.
+> This update ensures the project remains relevant, stable, and efficient for modern Android environments. Stay tuned for more improvements! 🚀🔥
+
 # Magisk Overlayfs
 
 On Android 10+, system partitions might no longer be able to remount as read-write. For devices use dynamic partition, it is nearly impossible to modify system partiton as there is no space left. This module solves these problem by using OverlayFS. So what is OverlayFS? On [Wikipedia](https://en.m.wikipedia.org/wiki/OverlayFS):
@@ -28,8 +42,8 @@ git clone http://github.com/HuskyDG/Magisk_OverlayFS && cd Magisk_OverlayFS
 ```
 2. Setup Android NDK in repository directory
 ```
-wget https://dl.google.com/android/repository/android-ndk-r23b-linux.zip
-unzip android-ndk-r23b-linux.zip
+wget https://dl.google.com/android/repository/android-ndk-r27c-linux.zip
+unzip android-ndk-r27c-linux.zip
 ```
 3. Run `bash build.sh`
 
@@ -132,11 +146,3 @@ export MAGISKTMP="$(magisk --path)"
 # - Load overlayfs
 ./overlayfs_system "$WRITEABLE"
 ```
-
-## Donate
-
-- If you like my work, you can donate at http://paypal.me/huskydg
-
-## Source code
-
-- <http://github.com/HuskyDG/Magisk_OverlayFS>
