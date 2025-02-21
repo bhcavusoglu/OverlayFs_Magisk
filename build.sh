@@ -6,7 +6,7 @@ build_mode="${1:-release}"
 
 cd "$(dirname "$0")"
 
-ANDROID_NDK_HOME=./android-ndk-r23b
+ANDROID_NDK_HOME=./android-ndk-r27c
 export PATH=${PATH}:${ANDROID_NDK_HOME}/toolchains/llvm/prebuilt/linux-x86_64/bin
 
 rm -rf out
