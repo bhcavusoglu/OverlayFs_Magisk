@@ -4,6 +4,7 @@
 #include <time.h>
 #include <string>
 #include <unistd.h>
+#include <vector>
 
 void log_to_file(int fd, int prio, const char *log) {
     if (fd < 0) {
@@ -31,15 +32,14 @@ void log_to_file(int fd, int prio, const char *log) {
             prio_c = 'I';
             break;
     }
-    char buf[4098];
-    // current date/time based on current system
+    std::vector<char> buf(4098);
     timeval tv;
     tm tm;
     gettimeofday(&tv, nullptr);
     localtime_r(&tv.tv_sec, &tm);
     long ms = tv.tv_usec / 1000;
-    size_t off = strftime(buf, sizeof(buf), "%m-%d %T", &tm);
-    snprintf(buf + off, sizeof(buf) - off,
+    size_t off = strftime(buf.data(), buf.size(), "%m-%d %T", &tm);
+    snprintf(buf.data() + off, buf.size() - off,
         ".%03ld %5d %5d %c : %s", ms, getpid(), gettid(), prio_c, log);
-    write(fd, buf, strlen(buf));
+    write(fd, buf.data(), strlen(buf.data()));
 }
