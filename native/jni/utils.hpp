@@ -1,4 +1,9 @@
+#ifndef UTILS_HPP
+#define UTILS_HPP
+
 #include "base.hpp"
+#include <vector>
+#include <string>
 
 char *random_strc(int n);
 bool starts_with(const char *s, const char *ss);
@@ -23,16 +28,17 @@ int getfilecon(const char *path, char **con);
 int setfilecon(const char *path, const char *con);
 void freecon(char *con);
 
+// Template for reversed iteration
 template <typename T>
 class reversed_container {
 public:
     reversed_container(T &base) : base(base) {}
-    decltype(std::declval<T>().rbegin()) begin() { return base.rbegin(); }
-    decltype(std::declval<T>().crbegin()) begin() const { return base.crbegin(); }
-    decltype(std::declval<T>().crbegin()) cbegin() const { return base.crbegin(); }
-    decltype(std::declval<T>().rend()) end() { return base.rend(); }
-    decltype(std::declval<T>().crend()) end() const { return base.crend(); }
-    decltype(std::declval<T>().crend()) cend() const { return base.crend(); }
+    auto begin() { return base.rbegin(); }
+    auto begin() const { return base.crbegin(); }
+    auto cbegin() const { return base.crbegin(); }
+    auto end() { return base.rend(); }
+    auto end() const { return base.crend(); }
+    auto cend() const { return base.crend(); }
 private:
     T &base;
 };
@@ -42,4 +48,4 @@ reversed_container<T> reversed(T &base) {
     return reversed_container<T>(base);
 }
 
-
+#endif // UTILS_HPP
