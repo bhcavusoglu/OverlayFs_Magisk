@@ -1,21 +1,25 @@
 #include "base.hpp"
 #include "mountinfo.hpp"
+#include <vector>
+#include <string_view>
+#include <cstdio>
+#include <cstdlib>
+#include <sys/sysmacros.h>
+
 #define ssprintf snprintf
 #define parse_int(s) atoi(s.data())
-
-// based on mountinfo code from https://github.com/yujincheng08
 
 using namespace std;
 
 std::vector<mount_info> parse_mount_info(const char *pid) {
-    char buf[4098] = {};
-    ssprintf(buf, sizeof(buf), "/proc/%s/mountinfo", pid);
+    std::vector<char> buf(4098);
+    ssprintf(buf.data(), buf.size(), "/proc/%s/mountinfo", pid);
     std::vector<mount_info> result;
-    FILE *fp = fopen(buf, "re");
+    FILE *fp = fopen(buf.data(), "re");
     if (fp == nullptr) return result;
 
-    while (fgets(buf, sizeof(buf), fp)) {
-        string_view line = buf;
+    while (fgets(buf.data(), buf.size(), fp)) {
+        string_view line = buf.data();
         int root_start = 0, root_end = 0;
         int target_start = 0, target_end = 0;
         int vfs_option_start = 0, vfs_option_end = 0;
@@ -78,8 +82,7 @@ std::vector<mount_info> parse_mount_info(const char *pid) {
             .shared = shared,
             .master = master,
             .propagate_from = propagate_from,
-            };
-        mnt_entry.root = root;
+        };
         mnt_entry.target = target;
         mnt_entry.type = type;
         mnt_entry.source = source;
